@@ -1,0 +1,25 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Johto</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Región de Johto</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-list *ngFor="let pokemon of _pokemons">
+    <ion-item [routerLink]="['/pokemon/', pokemon.name]">
+      <ion-avatar slot="start">
+        <ion-img [src]="pokemon.imageUrl" alt="{{pokemon.name + ' image'}}"></ion-img>
+      </ion-avatar>
+      <ion-label>{{ pokemon.name }}</ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>

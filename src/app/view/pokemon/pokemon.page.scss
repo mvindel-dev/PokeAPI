@@ -1,0 +1,77 @@
+ion-card{
+  background-color: rgb(255, 195, 43);
+  color: black;
+}
+
+#general-img{
+  padding: 10px;
+}
+
+.img-container {
+  position: relative;
+  border: 1px solid black;
+  border-radius: 5px;
+  background-image: url('/assets/pradera.webp');
+  background-size: cover;
+}
+
+.img-container-white{
+  position: relative;
+  border: 1px solid black;
+  border-radius: 5px;
+  background-color: white;
+  padding: 20px;
+}
+
+.small-image {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 50px; 
+  height: auto; 
+  cursor: pointer;
+  z-index: 1;
+}
+
+.small-img-container-white{
+  border: 1px solid black;
+  border-radius: 5px;
+  background-color: white;
+}
+
+.rotate {
+  transform: rotate-x(180deg);
+}
+
+.description{
+  border: 1px solid black;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  background-color: white;
+}
+
+.top{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  border: 1px solid black;
+}
+
+.left-top{
+  display: flex;
+  justify-content: flex-start;
+}
+
+.right-top{
+  display: flex;
+  justify-content: flex-end;
+}
+
+.typesIcons {
+  width: 24px; 
+  height: 24px; 
+  margin-right: 8px;
+  justify-content: flex-end;
+}

@@ -1,3 +1,87 @@
 <ion-app>
-  <ion-router-outlet></ion-router-outlet>
+
+  <ion-menu contentId="main-content">
+    <ion-header>
+      <ion-toolbar>
+        <ion-title>Regions</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content class="ion-padding">
+      <ion-list>
+        <ion-menu-toggle>
+          <ion-item [routerLink]="['/kanto']" [routerLinkActive]="['activatedLink']">
+            <ion-label class="label-container">
+              <ion-avatar slot="start" class="avatar-left">
+                <ion-img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/7.png"></ion-img>
+              </ion-avatar>
+              <span class="label-text">Kanto</span>
+            </ion-label>
+          </ion-item>
+        </ion-menu-toggle>     
+        <ion-menu-toggle>
+          <ion-item [routerLink]="['/johto']" [routerLinkActive]="['activatedLink']">
+            <ion-label class="label-container">
+              <ion-avatar slot="start" class="avatar-left">
+                <ion-img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/155.png"></ion-img>
+              </ion-avatar>
+              <span class="label-text">Johto</span>
+            </ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+        <ion-menu-toggle>
+          <ion-item [routerLink]="['/hoenn']" [routerLinkActive]="['activatedLink']">
+            <ion-label class="label-container">
+              <ion-avatar slot="start" class="avatar-left">
+                <ion-img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/252.png"></ion-img>
+              </ion-avatar>
+              <span class="label-text">Hoenn</span>
+            </ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+        <ion-menu-toggle>
+          <ion-item [routerLink]="['/sinnoh']" [routerLinkActive]="['activatedLink']">
+            <ion-label class="label-container">
+              <ion-avatar slot="start" class="avatar-left">
+                <ion-img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/393.png"></ion-img>
+              </ion-avatar>
+              <span class="label-text">Sinnoh</span>
+            </ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+        <ion-menu-toggle>
+          <ion-item [routerLink]="['/teselia']" [routerLinkActive]="['activatedLink']">
+            <ion-label class="label-container">
+              <ion-avatar slot="start" class="avatar-left">
+                <ion-img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/498.png"></ion-img>
+              </ion-avatar>
+              <span class="label-text">Teselia</span>
+            </ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+        <ion-menu-toggle>
+          <ion-item [routerLink]="['/kalos']" [routerLinkActive]="['activatedLink']">
+            <ion-label class="label-container">
+              <ion-avatar slot="start" class="avatar-left">
+                <ion-img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/650.png"></ion-img>
+              </ion-avatar>
+              <span class="label-text">Kalos</span>
+            </ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+        <ion-menu-toggle>
+          <ion-item [routerLink]="['/alola']" [routerLinkActive]="['activatedLink']">
+            <ion-label class="label-container">
+              <ion-avatar slot="start" class="avatar-left">
+                <ion-img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/725.png"></ion-img>
+              </ion-avatar>
+              <span class="label-text">Alola</span>
+            </ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+      </ion-list>
+    </ion-content>
+  </ion-menu>
+
+
+  <ion-router-outlet id="main-content"></ion-router-outlet>
 </ion-app>
