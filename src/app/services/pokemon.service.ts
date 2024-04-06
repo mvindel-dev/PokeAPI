@@ -49,6 +49,7 @@ export class PokemonService {
     this._http.get(url).subscribe({
       next:(value:any) => {
         console.log(value);
+        console.log('prova');
       }
     })
     
