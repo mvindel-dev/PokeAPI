@@ -16,7 +16,7 @@
 
   <ion-card>
     <div class="top">
-      <div class="left-top"><b>{{pokemonName}} prova</b></div>
+      <div class="left-top"><b>{{pokemonName}}</b></div>
       <div class="right-top">
         <div *ngIf="pokemon && pokemon.stats!==undefined"><b><small>PS</small>{{pokemon.stats[0].base_stat}}</b></div>
         <div *ngFor="let types of pokemon?.types">
@@ -29,7 +29,7 @@
     <div id="general-img">
       <div id="img-container" [ngClass]="{'img-container': clicksQR % 2 === 0 , 'img-container-white': clicksQR % 2 !== 0}">
         <ion-img [src]="pokemon?.sprites?.front_default" (click)="clicksQR % 2 === 0 && rotate('pokemon-' + pokemon?.name)" [class.rotate]="clicksPokemon % 2 !== 0" [id]="'img-' + pokemon?.name" ></ion-img>
-        <ion-img src="/assets/qrimg.svg" (click)="toggleOtherImage(pokemon?.name)" [class.rotate]="clicksQR % 2 !== 0" [id]="'imgQR-' + pokemon?.name" class="small-image" [ngClass]="{'img-container': clicksQR % 2 !== 0 , 'small-img-container-white': clicksQR % 2 === 0}"></ion-img>
+        <ion-img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://pokeapi.co/api/v2/pokemon/{{pokemon?.name}}" (click)="toggleOtherImage(pokemon?.name)" [class.rotate]="clicksQR % 2 !== 0" [id]="'imgQR-' + pokemon?.name" class="small-image" [ngClass]="{'img-container': clicksQR % 2 !== 0 , 'small-img-container-white': clicksQR % 2 === 0}"></ion-img>
       </div>
       <div class="description">
         <div>N.º {{pokemonSpecies?.id}}</div>

@@ -1,7 +1,14 @@
 .avatar-left {
     width: fit-content; 
-    height: 84px; 
+    height: fit-content; 
     margin-right: 8px; 
+  }
+
+  .avatar-left-poke{
+    width: 96px; 
+    height: 96px; 
+    margin-right: 8px;
+    padding: 18px;
   }
   
   .label-text {
