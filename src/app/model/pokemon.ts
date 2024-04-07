@@ -18,14 +18,14 @@ export class Pokemon {
         this._cries=data.cries;
         this._forms=data.forms;
         this._game_indices=data.game_indices;
-        this._height=data.height;
+        this._height=data.height/10;
         this._moves=data.moves;
         this._name=data.name;
         this._species=data.species;
         this._sprites=data.sprites;
         this._stats=data.stats;
         this._types=data.types;
-        this._weight=data.weight;
+        this._weight=data.weight/10;
     }
 
     get abilities(): { ability: { name: string, url: string }, is_hidden: boolean, slot: number } { return this._abilities; }

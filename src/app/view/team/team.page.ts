@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Barcode, BarcodeScanner } from '@capacitor-mlkit/barcode-scanning';
 import { AlertController } from '@ionic/angular';
+import { Pokemon } from 'src/app/model/pokemon';
+import { PokemonService } from 'src/app/services/pokemon.service';
 
 
 @Component({
@@ -12,8 +14,9 @@ export class TeamPage implements OnInit {
 
   isSupported = false;
   barcodes: Barcode[] = [];
+  pokemons: Pokemon[] = [];
 
-  constructor(private alertController: AlertController) { }
+  constructor(private alertController: AlertController, private _pokemonService:PokemonService) { }
 
   ngOnInit() {
     BarcodeScanner.isSupported().then((result) => {
@@ -27,6 +30,7 @@ export class TeamPage implements OnInit {
       this.presentAlert();
       return;
     }
+
     const { available } = await BarcodeScanner.isGoogleBarcodeScannerModuleAvailable();
     
     if(!available){
@@ -37,6 +41,7 @@ export class TeamPage implements OnInit {
 
     const { barcodes } = await BarcodeScanner.scan();
     this.barcodes.push(...barcodes);
+    this.getPokemons();
   }
 
   async requestPermissions(): Promise<boolean> {
@@ -53,4 +58,11 @@ export class TeamPage implements OnInit {
     await alert.present();
   }
 
+  getPokemons(){
+    for(let i=this.pokemons.length; i<this.barcodes.length;i++){
+      this._pokemonService.getPokemonByUrl(this.barcodes[i].rawValue).subscribe((pokemon: Pokemon) => {
+        this.pokemons.push(pokemon);
+      });
+    }
+  }
 }

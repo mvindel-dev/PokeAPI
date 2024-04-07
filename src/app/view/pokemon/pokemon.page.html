@@ -36,8 +36,8 @@
         <ng-container *ngFor="let description of pokemonSpecies?.genera">
           <div *ngIf="description.language.name==='es'">{{description.genus}}</div>
         </ng-container>
-        <div *ngIf="pokemon && pokemon.height!==null">Altura {{pokemon.height / 10}}m</div>
-        <div *ngIf="pokemon && pokemon.weight !== null">Peso {{pokemon.weight / 10}}kg</div>
+        <div>Altura {{pokemon?.height}}m</div>
+        <div>Peso {{pokemon?.weight}}kg</div>
       </div> 
     </div>
     

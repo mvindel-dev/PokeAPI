@@ -59,7 +59,6 @@ export class PokemonService {
   }
 
   getPokemonSpecies(url: string){
-
     this._http.get(url).subscribe({
       next:(value:any) => {
         console.log(value);
@@ -68,6 +67,12 @@ export class PokemonService {
     })
     return this._http.get(url).pipe(
       map((value:any) => new PokemonSpecies(value))
+    );
+  }
+
+  getPokemonByUrl(url: string){
+    return this._http.get(url).pipe(
+      map((value:any) => new Pokemon(value))
     );
   }
   
