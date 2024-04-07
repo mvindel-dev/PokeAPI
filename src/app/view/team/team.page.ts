@@ -27,6 +27,14 @@ export class TeamPage implements OnInit {
       this.presentAlert();
       return;
     }
+    const { available } = await BarcodeScanner.isGoogleBarcodeScannerModuleAvailable();
+    
+    if(!available){
+      await BarcodeScanner.installGoogleBarcodeScannerModule();
+      const { barcodes } = await BarcodeScanner.scan();
+      this.barcodes.push(...barcodes);
+    }
+
     const { barcodes } = await BarcodeScanner.scan();
     this.barcodes.push(...barcodes);
   }
