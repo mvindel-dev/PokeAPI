@@ -16,6 +16,7 @@ export class PokemonPage {
   public pokemon: Pokemon | null | undefined;
   public pokemonSpecies: PokemonSpecies | null | undefined;
 
+  
   constructor(private _route: ActivatedRoute, private _pokemonService: PokemonService) {
     this.pokemonName = this._route.snapshot.paramMap.get('name');
 
@@ -28,6 +29,8 @@ export class PokemonPage {
             this.pokemonSpecies=pokemonSpecies;
           })
         }
+
+        
       });
     }
 

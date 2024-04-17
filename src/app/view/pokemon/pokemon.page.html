@@ -34,10 +34,10 @@
       <div class="description">
         <div>N.º {{pokemonSpecies?.id}}</div>
         <ng-container *ngFor="let description of pokemonSpecies?.genera">
-          <div *ngIf="description.language.name==='es'">{{description.genus}}</div>
+          <div *ngIf="description.language.name==='en'">{{description.genus}}</div>
         </ng-container>
-        <div>Altura {{pokemon?.height}}m</div>
-        <div>Peso {{pokemon?.weight}}kg</div>
+        <div>Height {{pokemon?.height}}m</div>
+        <div>Weight {{pokemon?.weight}}kg</div>
       </div> 
     </div>
     
@@ -46,11 +46,21 @@
     </ion-card-header>
     <ion-card-content>
       <ng-container *ngFor="let descriptions of pokemonSpecies?.flavor_text_entries">
-        <div *ngIf="descriptions.language.name=='es' && descriptions.version.name==='x'">
+        <div *ngIf="descriptions.language.name=='en' && descriptions.version.name==='x'">
         {{descriptions.flavor_text}}
         </div>
       </ng-container>
     </ion-card-content>
+    <ion-accordion-group>
+      <ion-accordion value="first">
+        <ion-item slot="header" color="light">
+          <ion-label>Abilities</ion-label>
+        </ion-item>
+        <div class="ion-padding" slot="content" *ngFor="let abilities of pokemon?.abilities">
+          {{abilities.ability.name}}
+        </div>
+      </ion-accordion>
+    </ion-accordion-group>
   </ion-card>
   
 </ion-content>

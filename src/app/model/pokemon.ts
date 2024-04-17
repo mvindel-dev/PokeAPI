@@ -1,6 +1,6 @@
 export class Pokemon {
 
-    private _abilities:{ability:{name:string, url:string}, is_hidden:boolean, slot:number};
+    private _abilities:[{ability:{name:string, url:string}, is_hidden:boolean, slot:number}];
     private _cries: {latest:string, legacy:string};
     private _forms:{name:string, url:string};
     private _game_indices:{game_index:number, version:{name:string, url:string}};
@@ -28,7 +28,7 @@ export class Pokemon {
         this._weight=data.weight/10;
     }
 
-    get abilities(): { ability: { name: string, url: string }, is_hidden: boolean, slot: number } { return this._abilities; }
+    get abilities(): [{ ability: { name: string, url: string }, is_hidden: boolean, slot: number }] { return this._abilities; }
     get cries(): { latest: string, legacy: string } { return this._cries; }
     get forms(): { name: string, url: string } { return this._forms; }
     get game_indices(): { game_index: number, version: { name: string, url: string } } { return this._game_indices; }

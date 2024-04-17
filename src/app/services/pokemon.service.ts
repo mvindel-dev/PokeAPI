@@ -49,7 +49,6 @@ export class PokemonService {
     this._http.get(url).subscribe({
       next:(value:any) => {
         console.log(value);
-        console.log('prova');
       }
     })
     
@@ -62,7 +61,6 @@ export class PokemonService {
     this._http.get(url).subscribe({
       next:(value:any) => {
         console.log(value);
-        
       }
     })
     return this._http.get(url).pipe(
@@ -74,6 +72,14 @@ export class PokemonService {
     return this._http.get(url).pipe(
       map((value:any) => new Pokemon(value))
     );
+  }
+
+  getSpanishAbilities(url: string){
+    return this._http.get(url).subscribe({
+      next: (value: any) => {
+        return value;
+      }
+    })
   }
   
 }
