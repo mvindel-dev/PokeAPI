@@ -1,17 +1,21 @@
 body.barcode-scanner-active {
-    visibility: hidden;
+  visibility: hidden;
+  --background: transparent;
+  --ion-background-color: transparent;
+}
+
+.barcode-scanner-modal {
+  visibility: visible;
+}
+
+@media (prefers-color-scheme: dark) {
+  .barcode-scanner-modal {
     --background: transparent;
     --ion-background-color: transparent;
   }
-  
-  // Show only the barcode scanner modal
-  .barcode-scanner-modal {
-    visibility: visible;
-  }
-  
-  @media (prefers-color-scheme: dark) {
-    .barcode-scanner-modal {
-      --background: transparent;
-      --ion-background-color: transparent;
-    }
-  }
+}
+
+.custom-toast {
+  --background: rgb(253, 99, 99);
+  --color: #000;
+}

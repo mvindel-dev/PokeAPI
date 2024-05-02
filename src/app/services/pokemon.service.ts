@@ -45,12 +45,6 @@ export class PokemonService {
 
   getPokemon(pokemonName: string|null): Observable<Pokemon> {
     const url = "https://pokeapi.co/api/v2/pokemon/"+pokemonName?.toLocaleLowerCase();
-
-    this._http.get(url).subscribe({
-      next:(value:any) => {
-        console.log(value);
-      }
-    })
     
     return this._http.get(url).pipe(
       map((value:any) => new Pokemon(value))
@@ -58,11 +52,6 @@ export class PokemonService {
   }
 
   getPokemonSpecies(url: string){
-    this._http.get(url).subscribe({
-      next:(value:any) => {
-        console.log(value);
-      }
-    })
     return this._http.get(url).pipe(
       map((value:any) => new PokemonSpecies(value))
     );

@@ -8,15 +8,25 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-list>
-    <ion-item *ngFor="let pokemon of pokemons">
-      <ion-label position="stacked">{{ pokemon.name }}</ion-label>
-      <ion-input type="text" [value]="pokemon.height"></ion-input>
+  <ion-list *ngFor="let pokemon of pokemons">
+    <ion-item>
+      <ion-item [routerLink]="['/pokemon/', pokemon.name]">
+        <ion-avatar slot="start">
+          <ion-img [src]="pokemon.sprites.front_default" alt="{{pokemon.name + ' image'}}"></ion-img>
+        </ion-avatar>
+        <ion-label>{{ pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1) }}</ion-label>
+      </ion-item>
+      <ion-button (click)="delete(pokemon.name)" slot="end">Delete</ion-button>
     </ion-item>
   </ion-list>
-  <ion-fab slot="fixed" vertical="bottom" horizontal="end">
+
+
+  <ion-fab slot="fixed" vertical="bottom" horizontal="end" *ngIf="count<6">
     <ion-fab-button (click)="scan()" [disabled]="!isSupported">
       <ion-icon name="scan"></ion-icon>
     </ion-fab-button>
   </ion-fab>
+
+
+  <ion-button (click)="saveInfo()">Save team</ion-button>
 </ion-content>
