@@ -5,6 +5,7 @@ import { map, tap } from 'rxjs/operators';
 import { PokemonRegion } from '../model/pokemon-region';
 import { PokemonSpecies } from '../model/pokemon-species';
 import { Pokemon } from '../model/pokemon';
+import { Berry } from '../model/berry';
 
 @Injectable({
   providedIn: 'root'
@@ -31,6 +32,18 @@ export class PokemonService {
         this.pokemons = pokemons;
       })
     );
+  }
+
+  retrieveBerries(): Observable<any>{
+    const url = "https://pokeapi.co/api/v2/berry?offset=0&limit=64";
+
+    return this._http.get(url).pipe(
+      map((data: any) => {
+        return data.results.map((entry: any) => {
+          return new Berry(entry.name);
+        })
+      })
+    )
   }
   
   getPokemons(): PokemonRegion[] {

@@ -1,12 +1,12 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { JohtoPage } from './johto.page';
+import { RegionPagePage } from './region-page.page';
 
-describe('JohtoPage', () => {
-  let component: JohtoPage;
-  let fixture: ComponentFixture<JohtoPage>;
+describe('RegionPagePage', () => {
+  let component: RegionPagePage;
+  let fixture: ComponentFixture<RegionPagePage>;
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(JohtoPage);
+    fixture = TestBed.createComponent(RegionPagePage);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -4,17 +4,17 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { TeseliaPageRoutingModule } from './teselia-routing.module';
+import { BerriesPageRoutingModule } from './berries-routing.module';
 
-import { TeseliaPage } from './teselia.page';
+import { BerriesPage } from './berries.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    TeseliaPageRoutingModule
+    BerriesPageRoutingModule
   ],
-  declarations: [TeseliaPage]
+  declarations: [BerriesPage]
 })
-export class TeseliaPageModule {}
+export class BerriesPageModule {}

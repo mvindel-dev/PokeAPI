@@ -3,7 +3,8 @@ import { Barcode, BarcodeScanner } from '@capacitor-mlkit/barcode-scanning';
 import { AlertController, ToastController } from '@ionic/angular';
 import { Pokemon } from 'src/app/model/pokemon';
 import { PokemonService } from 'src/app/services/pokemon.service';
-import { Filesystem, Directory, Encoding } from '@capacitor/filesystem';
+import { FileSystemService } from 'src/app/services/file-system.service';
+import { BarcodeService } from 'src/app/services/barcode.service';
 
 
 @Component({
@@ -21,7 +22,9 @@ export class TeamPage implements OnInit {
   constructor(
     private alertController: AlertController,
     private _pokemonService:PokemonService,
-    public _toastController:ToastController
+    public _toastController:ToastController,
+    private _fileSystem: FileSystemService,
+    private _scanner: BarcodeService
   ) {}
 
   async ngOnInit() {
@@ -29,54 +32,11 @@ export class TeamPage implements OnInit {
       this.isSupported = result.supported;
     });
 
-    const contents = await Filesystem.readFile({
-      path: 'pokemons.txt',
-      directory: Directory.Documents,
-      encoding: Encoding.UTF8,
-    });
-
-    if(contents){
-      let pokemonsNames = contents.data.toString().split('//');
-      this.getPokemonsByName(pokemonsNames);
-    }
+    this._fileSystem.readFile();
   }
 
   async scan(): Promise<void> {
-    const granted = await this.requestPermissions();
-    if (!granted) {
-      this.presentAlert();
-      return;
-    }
-
-    const { available } = await BarcodeScanner.isGoogleBarcodeScannerModuleAvailable();
-    
-    if(!available){
-      await BarcodeScanner.installGoogleBarcodeScannerModule();
-      const { barcodes } = await BarcodeScanner.scan();
-      this.barcodes.push(...barcodes);
-    }
-
-    const { barcodes } = await BarcodeScanner.scan();
-    if (barcodes.some(code => this.barcodes.some(existingCode => existingCode.rawValue === code.rawValue))) {
-      this.showToast('No agreguis dos pokemons iguals! Recorda que un bon equip porta pokemons de diferents tipus')
-    }else{
-      this.barcodes.push(...barcodes);
-      this.getPokemons();
-    }
-  }
-
-  async requestPermissions(): Promise<boolean> {
-    const { camera } = await BarcodeScanner.requestPermissions();
-    return camera === 'granted' || camera === 'limited';
-  }
-
-  async presentAlert(): Promise<void> {
-    const alert = await this.alertController.create({
-      header: 'Permission denied',
-      message: 'Please grant camera permission to use the barcode scanner.',
-      buttons: ['OK'],
-    });
-    await alert.present();
+    this._scanner.scan();
   }
 
   getPokemons(){
@@ -97,27 +57,8 @@ export class TeamPage implements OnInit {
     }
   }
 
-  async showToast(text: string){
-    const toast = await this._toastController.create({
-      message: text,
-      color: 'danger',
-      duration: 5000
-    });
-    toast.present();
-  }
-
-
-
   async saveInfo(){
-    let names = "";
-    this.pokemons.forEach(pokemon => names += pokemon.name + "//");
-
-      await Filesystem.writeFile({
-        path: 'pokemons.txt',
-        data: names,
-        directory: Directory.Documents,
-        encoding: Encoding.UTF8,
-      });    
+    this._fileSystem.saveInfo();
   }
 
 

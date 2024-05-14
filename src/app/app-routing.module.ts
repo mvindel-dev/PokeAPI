@@ -3,32 +3,8 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
-    path: 'kanto',
-    loadChildren: () => import('./view/regions/kanto/kanto.module').then( m => m.KantoPageModule)
-  },
-  {
-    path: 'johto',
-    loadChildren: () => import('./view/regions/johto/johto.module').then( m => m.JohtoPageModule)
-  },
-  {
-    path: 'hoenn',
-    loadChildren: () => import('./view/regions/hoenn/hoenn.module').then( m => m.HoennPageModule)
-  },
-  {
-    path: 'sinnoh',
-    loadChildren: () => import('./view/regions/sinnoh/sinnoh.module').then( m => m.SinnohPageModule)
-  },
-  {
-    path: 'teselia',
-    loadChildren: () => import('./view/regions/teselia/teselia.module').then( m => m.TeseliaPageModule)
-  },
-  {
-    path: 'kalos',
-    loadChildren: () => import('./view/regions/kalos/kalos.module').then( m => m.KalosPageModule)
-  },
-  {
-    path: 'alola',
-    loadChildren: () => import('./view/regions/alola/alola.module').then( m => m.AlolaPageModule)
+    path: 'region-page/:name',
+    loadChildren: () => import('./view/region-page/region-page.module').then( m => m.RegionPagePageModule)
   },
   {
     path: 'pokemon/:name',
@@ -40,8 +16,12 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'kanto',
+    redirectTo: 'region-page/kanto',
     pathMatch: 'full'
+  },
+  {
+    path: 'berries',
+    loadChildren: () => import('./view/berries/berries.module').then( m => m.BerriesPageModule)
   }
 ];
 

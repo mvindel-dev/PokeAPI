@@ -4,17 +4,17 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { JohtoPageRoutingModule } from './johto-routing.module';
+import { RegionPagePageRoutingModule } from './region-page-routing.module';
 
-import { JohtoPage } from './johto.page';
+import { RegionPagePage } from './region-page.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    JohtoPageRoutingModule
+    RegionPagePageRoutingModule
   ],
-  declarations: [JohtoPage]
+  declarations: [RegionPagePage]
 })
-export class JohtoPageModule {}
+export class RegionPagePageModule {}

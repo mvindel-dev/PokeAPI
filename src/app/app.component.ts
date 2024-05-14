@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { BarcodeScanner } from '@capacitor-mlkit/barcode-scanning';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,19 @@ import { Component } from '@angular/core';
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
-  constructor() {}
+  constructor() {
+
+    this.scan();
+    
+    
+  }
+
+  async scan(){
+    const { available } = await BarcodeScanner.isGoogleBarcodeScannerModuleAvailable();
+    
+    if(!available){
+      await BarcodeScanner.installGoogleBarcodeScannerModule();
+      const { barcodes } = await BarcodeScanner.scan();
+    }
+  }
 }
